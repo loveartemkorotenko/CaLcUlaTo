@@ -2,30 +2,31 @@
 
 public class CustomStack<T>
 {
-    private Node<T> top;
+    private Node<T> _top;
 
     public bool IsEmpty()
     {
-        return top == null;
+        return _top == null;
     }
 
     public void Push(T item)
     {
         Node<T> newNode = new Node<T>(item);
 
-        newNode.Next = top;
+        newNode.Next = _top;
 
-        top = newNode;
+        _top = newNode;
 
     }
 
     public T Pop()
     {
-        if (IsEmpty()) throw new InvalidOperationException("Стек пустий");
+        if (IsEmpty()) 
+            throw new InvalidOperationException("Стек пустий");
         
-        T value = top.Value;
+        T value = _top.Value;
         
-        top = top.Next;
+        _top = _top.Next;
         
         return value;
         
@@ -33,8 +34,9 @@ public class CustomStack<T>
 
     public T Peek()
     {
-        if (IsEmpty()) throw new InvalidOperationException("У стеці немає елементів для перегляду");
+        if (IsEmpty()) 
+            throw new InvalidOperationException("У стеці немає елементів для перегляду");
 
-        return top.Value;
+        return _top.Value;
     }
 }
