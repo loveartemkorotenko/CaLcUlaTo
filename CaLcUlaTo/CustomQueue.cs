@@ -2,15 +2,15 @@
 
 public class CustomQueue
 {
-    private string[] _array = new string[10];
+    private Token[] _array = new Token[10];
 
     private int _pointer = 0;
 
-    public void Enqueue(string element)
+    public void Enqueue(Token element)
     {
         if (_pointer == _array.Length)
         {
-            var extendedArray = new string[_array.Length * 2];
+            var extendedArray = new Token[_array.Length * 2];
 
             for (var i = 0; i < _array.Length; i++)
             {
@@ -25,14 +25,14 @@ public class CustomQueue
         _pointer += 1;
     }
 
-    public string Dequeue()
+    public Token Dequeue()
     {
         if (_pointer == 0)
         {
             return null;
         }
 
-        string value = _array[0];
+        Token value = _array[0];
 
         for (var j = 0; j < _pointer - 1; j++)
         {
@@ -46,7 +46,7 @@ public class CustomQueue
         return value;
     }
 
-    public string Peek()
+    public Token Peek()
     {
         if (_pointer == 0)
         {

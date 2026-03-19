@@ -3,55 +3,42 @@
 public class CustomStack
 {
     private const int Capacity = 50;
-
-    private string[] _array = new string[Capacity];
-
+    
+    private Token[] _array = new Token[Capacity];
+    
     private int _pointer;
-
-    public void Push(string value)
+    
+    public void Push(Token value)
     {
         if (_pointer == _array.Length)
         {
-            throw new Exception("Stack is full");
+            throw new Exception("Stack overflowed");
         }
 
         _array[_pointer] = value;
-
-        _pointer++;
         
+        _pointer++;
     }
-
-    public string Pop()
+    
+    public Token Pull()
     {
-        if (_pointer == 0)
-        {
-            return null;
-        }
+        if (_pointer == 0) return null;
 
         _pointer--;
-
-        var value = _array[_pointer];
-
-        _array[_pointer] = null;
-
-        return value;
         
+        Token value = _array[_pointer];
+        
+        _array[_pointer] = null;
+            
+        return value;
     }
 
-    public string Peek()
+    public Token Peek()
     {
-        if (_pointer == 0)
-        {
-            return null;
-        }
-
+        if (_pointer == 0) return null;
+        
         return _array[_pointer - 1];
+    }
 
-    }
     public bool IsEmpty => _pointer == 0;
-    
-    public int Count()
-    {
-        return _pointer;
-    }
 }

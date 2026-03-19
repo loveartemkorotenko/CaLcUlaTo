@@ -1,15 +1,53 @@
 ﻿namespace CaLcUlaTo;
 
-public class Tokenizer()
+public class Tokenizer
 {
-    public enum TokenType {Number, Operator, Parenthesis}
-
-    public struct Token
+    public static CustomQueue Tokenize(string expression)
     {
-        public TokenType Type;
-        public string Value;
-        public override string ToString() => $"{Type}: {Value}";
+        CustomQueue tokens = new CustomQueue();
+        string buffer = "";
+
+        foreach (var c in expression)
+        {
+            if (char.IsLetterOrDigit(c))
+            {
+                buffer += c;
+            }
+            else if (char.IsWhiteSpace(c))
+            {
+                if (buffer != "")
+                {
+                    tokens.Enqueue(new Token(buffer, TokenType.Number));
+                    buffer = "";
+                }
+            }
+            else
+            {
+                if (buffer != "")
+                {
+                    tokens.Enqueue(new Token(buffer, TokenType.Number));
+                    buffer = "";
+                }
+                
+                if (c == '(' )
+                {
+                    tokens.Enqueue(new Token(c.ToString(), TokenType.LeftParenthesis));
+                }
+                else if (c == ')' )
+                {
+                    tokens.Enqueue(new Token(c.ToString(), TokenType.RightParenthesis));
+                }
+                else
+                {
+                    tokens.Enqueue(new Token(c.ToString(), TokenType.Operator));
+                }
+            }
+        } 
+        if (buffer != "")
+        {
+            tokens.Enqueue(new Token(buffer, TokenType.Number));
+        }
+
+        return tokens;
     }
-    
-    
 }
