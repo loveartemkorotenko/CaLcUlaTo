@@ -1,45 +1,66 @@
 ﻿namespace CaLcUlaTo;
 
-public class CustomQueue<T>
+public class CustomQueue
 {
-    private Node<T> _tail;
+    private string[] _array = new string[10];
 
-    private Node<T> _head;
+    private int _pointer = 0;
 
-    public bool IsEmpty()
+    public void Enqueue(string element)
     {
-        return _head == null;
-    }
-
-    public void Enqueue(T item)
-    {
-        Node<T> newNode = new Node<T>(item);
-
-        if (_tail == null)
+        if (_pointer == _array.Length)
         {
-            _head = _tail = newNode;
-            return;
+            var extendedArray = new string[_array.Length * 2];
+
+            for (var i = 0; i < _array.Length; i++)
+            {
+                extendedArray[i] = _array[i];
+            }
+
+            _array = extendedArray;
         }
 
-        _tail.Next = newNode;
+        _array[_pointer] = element;
 
-        _tail = newNode;
+        _pointer += 1;
     }
 
-    public T Dequeue()
+    public string Dequeue()
     {
-        if (IsEmpty())
-            throw new ArgumentException("Черга пуста, не можна прибрати елемент із черги");
+        if (_pointer == 0)
+        {
+            return null;
+        }
 
-        T value = _head.Value;
+        string value = _array[0];
+
+        for (var j = 0; j < _pointer - 1; j++)
+        {
+            _array[j] = _array[j + 1];
+        }
+
+        _pointer -= 1;
         
-        _head = _head.Next;
-
-        if (_head == null)
-        {
-            _tail = null;
-        }
-
+        _array[_pointer] = null;
+        
         return value;
     }
-}
+
+    public string Peek()
+    {
+        if (_pointer == 0)
+        {
+            return null;
+        }
+
+        return _array[0];
+    }
+
+    public bool IsEmpty => _pointer == 0;
+
+    public int Count()
+    {
+        return _pointer;
+    }
+
+}    

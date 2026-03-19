@@ -1,42 +1,57 @@
 ﻿namespace CaLcUlaTo;
 
-public class CustomStack<T>
+public class CustomStack
 {
-    private Node<T> _top;
+    private const int Capacity = 50;
 
-    public bool IsEmpty()
+    private string[] _array = new string[Capacity];
+
+    private int _pointer;
+
+    public void Push(string value)
     {
-        return _top == null;
+        if (_pointer == _array.Length)
+        {
+            throw new Exception("Stack is full");
+        }
+
+        _array[_pointer] = value;
+
+        _pointer++;
+        
     }
 
-    public void Push(T item)
+    public string Pop()
     {
-        Node<T> newNode = new Node<T>(item);
+        if (_pointer == 0)
+        {
+            return null;
+        }
 
-        newNode.Next = _top;
+        _pointer--;
 
-        _top = newNode;
+        var value = _array[_pointer];
 
-    }
+        _array[_pointer] = null;
 
-    public T Pop()
-    {
-        if (IsEmpty()) 
-            throw new InvalidOperationException("Стек пустий");
-        
-        T value = _top.Value;
-        
-        _top = _top.Next;
-        
         return value;
         
     }
 
-    public T Peek()
+    public string Peek()
     {
-        if (IsEmpty()) 
-            throw new InvalidOperationException("У стеці немає елементів для перегляду");
+        if (_pointer == 0)
+        {
+            return null;
+        }
 
-        return _top.Value;
+        return _array[_pointer - 1];
+
+    }
+    public bool IsEmpty => _pointer == 0;
+    
+    public int Count()
+    {
+        return _pointer;
     }
 }
