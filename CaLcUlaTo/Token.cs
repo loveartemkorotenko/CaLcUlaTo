@@ -6,7 +6,8 @@ public enum TokenType
     Operator,
     LeftParenthesis,
     RightParenthesis,
-    Function
+    Function,
+    ArgumentSeparator
 }
 
 

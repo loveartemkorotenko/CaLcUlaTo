@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CaLcUlaTo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29e97c041b48cb79d326cedf9f811488709a99dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3a48b9e0fd466284a847ec9ff7c07c90feda3a20")]
 [assembly: System.Reflection.AssemblyProductAttribute("CaLcUlaTo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CaLcUlaTo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

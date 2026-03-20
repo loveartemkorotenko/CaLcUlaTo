@@ -47,6 +47,7 @@ public class Calculator
                     
                     case "^": result = Math.Pow(left, right); break;
                     
+                    
                     default: throw new ArgumentException($"Unknown operator: {token.Value}");
                 }
                 
@@ -75,6 +76,30 @@ public class Calculator
                 }
 
                 stack.Push(new Token(result.ToString(CultureInfo.InvariantCulture), TokenType.Number));
+            }
+            else if (token.Type == TokenType.ArgumentSeparator)
+            {
+                Token leftMaxMin = stack.Pull();
+                
+                Token rightMaxMin = stack.Pull();
+                
+                if (rightMaxMin == null || leftMaxMin == null)
+                    throw new Exception($"Не вистачає чисел для оператора {token.Value}");
+                
+                double rightM = double.Parse(rightMaxMin.Value.Replace(',', '.'), CultureInfo.InvariantCulture);
+                
+                double leftM = double.Parse(leftMaxMin.Value.Replace(',', '.'), CultureInfo.InvariantCulture);   
+                
+                double result = 0;
+
+                switch (token.Value.ToLower())
+                {
+                    case "max":
+                        if (rightM > leftM)
+                        {
+                            result = 
+                        } 
+                }
             }
         }
         
