@@ -37,6 +37,10 @@ public class ShuntingYard
             {
                 postfixQueue.Enqueue(token);
             }
+            else if (token.Type == TokenType.Function) 
+            {
+                operatorStack.Push(token);
+            }
             else if (token.Type == TokenType.LeftParenthesis)
             {
                 operatorStack.Push(token);
@@ -51,6 +55,10 @@ public class ShuntingYard
                 if (!operatorStack.IsEmpty && operatorStack.Peek().Type == TokenType.LeftParenthesis)
                 {
                     operatorStack.Pull();
+                }
+                if (!operatorStack.IsEmpty && operatorStack.Peek().Type == TokenType.Function)
+                {
+                    postfixQueue.Enqueue(operatorStack.Pull());
                 }
             }
             else if (token.Type == TokenType.Operator)

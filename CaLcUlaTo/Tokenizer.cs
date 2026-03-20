@@ -9,24 +9,25 @@ public class Tokenizer
 
         foreach (var c in expression)
         {
-            if (char.IsLetterOrDigit(c))
+            if (char.IsLetterOrDigit(c) || c == '.' || c == ',')
             {
-                buffer += c;
+                buffer += c;          
             }
             else if (char.IsWhiteSpace(c))
             {
                 if (buffer != "")
                 {
-                    tokens.Enqueue(new Token(buffer, TokenType.Number));
-                    buffer = "";
+                    AddBufferToQueue(buffer, tokens);
+                    buffer = "";                
                 }
             }
             else
             {
                 if (buffer != "")
                 {
-                    tokens.Enqueue(new Token(buffer, TokenType.Number));
-                    buffer = "";
+                    AddBufferToQueue(buffer, tokens); 
+                    
+                    buffer = "";               
                 }
                 
                 if (c == '(' )
@@ -45,9 +46,21 @@ public class Tokenizer
         } 
         if (buffer != "")
         {
-            tokens.Enqueue(new Token(buffer, TokenType.Number));
+            AddBufferToQueue(buffer, tokens);
         }
 
         return tokens;
+    }
+
+    private static void AddBufferToQueue(string buffer, CustomQueue tokens)
+    {
+        if (char.IsLetter(buffer[0]))
+        {
+            tokens.Enqueue(new Token(buffer, TokenType.Function));
+        }
+        else
+        {
+            tokens.Enqueue(new Token(buffer, TokenType.Number));
+        }
     }
 }

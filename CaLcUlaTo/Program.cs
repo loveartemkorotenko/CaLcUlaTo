@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CaLcUlaTo;
+﻿namespace CaLcUlaTo;
 
 class Program
 {
