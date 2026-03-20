@@ -1,0 +1,15 @@
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\obj\Debug\net10.0\CaLcUlaTo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\obj\Debug\net10.0\CaLcUlaTo.AssemblyInfoInputs.cache
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\obj\Debug\net10.0\CaLcUlaTo.AssemblyInfo.cs
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\obj\Debug\net10.0\CaLcUlaTo.csproj.CoreCompileInputs.cache
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\obj\Debug\net10.0\CaLcUlaTo.sourcelink.json
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\bin\Debug\net10.0\CaLcUlaTo.exe
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\bin\Debug\net10.0\CaLcUlaTo.deps.json
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\bin\Debug\net10.0\CaLcUlaTo.runtimeconfig.json
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\bin\Debug\net10.0\CaLcUlaTo.dll
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\bin\Debug\net10.0\CaLcUlaTo.pdb
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\obj\Debug\net10.0\CaLcUlaTo.dll
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\obj\Debug\net10.0\refint\CaLcUlaTo.dll
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\obj\Debug\net10.0\CaLcUlaTo.pdb
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\obj\Debug\net10.0\CaLcUlaTo.genruntimeconfig.cache
+C:\Users\akims_hfn9x6a\RiderProjects\CaLcUlaTo\CaLcUlaTo\obj\Debug\net10.0\ref\CaLcUlaTo.dll
