@@ -13,6 +13,7 @@ public class ShuntingYard
                 return 2;
             case "+":
             case "-":
+            case "@":
                 return 1;
             default:
                 return 0;
@@ -44,6 +45,13 @@ public class ShuntingYard
             else if (token.Type == TokenType.LeftParenthesis)
             {
                 operatorStack.Push(token);
+            }
+            else if (token.Type == TokenType.ArgumentSeparator)
+            {
+                while (!operatorStack.IsEmpty && operatorStack.Peek().Type != TokenType.LeftParenthesis)
+                {
+                    postfixQueue.Enqueue(operatorStack.Pull());
+                }
             }
             else if (token.Type == TokenType.RightParenthesis)
             {

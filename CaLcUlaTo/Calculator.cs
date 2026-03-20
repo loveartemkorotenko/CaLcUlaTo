@@ -1,5 +1,4 @@
-﻿
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace CaLcUlaTo;
 
@@ -20,14 +19,12 @@ public class Calculator
             else if (token.Type == TokenType.Operator)
             {
                 Token rightToken = stack.Pull();
-                
                 Token leftToken = stack.Pull();
                 
                 if (rightToken == null || leftToken == null)
                     throw new Exception($"Не вистачає чисел для оператора {token.Value}");
 
                 double right = double.Parse(rightToken.Value.Replace(',', '.'), CultureInfo.InvariantCulture);
-                
                 double left = double.Parse(leftToken.Value.Replace(',', '.'), CultureInfo.InvariantCulture);   
                 
                 double result = 0;
@@ -42,11 +39,14 @@ public class Calculator
                     
                     case "/":
                         if (right == 0) throw new DivideByZeroException("На нуль ділити не можна");
+                        
                         result = left / right;
+                        
                         break;
                     
                     case "^": result = Math.Pow(left, right); break;
                     
+                    case "@": result = Math.Min(left, right); break; 
                     
                     default: throw new ArgumentException($"Unknown operator: {token.Value}");
                 }
@@ -55,52 +55,45 @@ public class Calculator
             }
             else if (token.Type == TokenType.Function)
             {
-                Token argToken = stack.Pull();
+                Token rightArgToken = stack.Pull();
                 
-                if (argToken == null)
+                if (rightArgToken == null)
+                    
                     throw new Exception($"Не вистачає аргументу для функції {token.Value}");
                 
-                double arg = double.Parse(argToken.Value.Replace(',', '.'), CultureInfo.InvariantCulture);
+                double rightArg = double.Parse(rightArgToken.Value.Replace(',', '.'), CultureInfo.InvariantCulture);
                 
                 double result = 0;
-
-                switch (token.Value.ToLower())
+                
+                if (token.Value.ToLower() == "max")
                 {
-                    case "sin": result = Math.Sin(arg); break;
+                    Token leftArgToken = stack.Pull();
                     
-                    case "cos": result = Math.Cos(arg); break;
+                    if (leftArgToken == null)
+                        throw new Exception("Не вистачає другого аргументу для max");
                     
-                    case "tan": result = Math.Tan(arg); break;
+                    double leftArg = double.Parse(leftArgToken.Value.Replace(',', '.'), CultureInfo.InvariantCulture);
                     
-                    default: throw new ArgumentException($"Unknown function: {token.Value}");
+                    result = Math.Max(leftArg, rightArg);
+                }
+                else
+                {
+
+                    switch (token.Value.ToLower())
+                    {
+                        case "sin": result = Math.Sin(rightArg); break;
+                        
+                        case "cos": result = Math.Cos(rightArg); break;
+                        
+                        case "tan": result = Math.Tan(rightArg); break;
+                        
+                        default: throw new ArgumentException($"Unknown function: {token.Value}");
+                    }
                 }
 
                 stack.Push(new Token(result.ToString(CultureInfo.InvariantCulture), TokenType.Number));
             }
-            else if (token.Type == TokenType.ArgumentSeparator)
-            {
-                Token leftMaxMin = stack.Pull();
-                
-                Token rightMaxMin = stack.Pull();
-                
-                if (rightMaxMin == null || leftMaxMin == null)
-                    throw new Exception($"Не вистачає чисел для оператора {token.Value}");
-                
-                double rightM = double.Parse(rightMaxMin.Value.Replace(',', '.'), CultureInfo.InvariantCulture);
-                
-                double leftM = double.Parse(leftMaxMin.Value.Replace(',', '.'), CultureInfo.InvariantCulture);   
-                
-                double result = 0;
 
-                switch (token.Value.ToLower())
-                {
-                    case "max":
-                        if (rightM > leftM)
-                        {
-                            result = 
-                        } 
-                }
-            }
         }
         
         Token finalToken = stack.Pull();

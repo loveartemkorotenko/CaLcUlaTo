@@ -42,10 +42,6 @@ public class Tokenizer
                 {
                     tokens.Enqueue(new Token(c.ToString(), TokenType.ArgumentSeparator));
                 }
-                else if (c == '@')
-                {
-                    tokens.Enqueue(new Token(c.ToString(), TokenType.ArgumentSeparator));
-                }
                 else
                 {
                     tokens.Enqueue(new Token(c.ToString(), TokenType.Operator));
